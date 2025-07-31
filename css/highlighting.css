@@ -1,0 +1,70 @@
+/* Text highlighting styles */
+.text-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: 0.2;
+    line-height: 1;
+}
+
+.text-layer > span {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    transform-origin: 0% 0%;
+}
+
+.highlight {
+    background-color: yellow !important;
+    opacity: 0.7 !important;
+}
+
+.highlight:hover {
+    cursor: pointer;
+    opacity: 0.9 !important;
+}
+
+.highlight-overlay {
+    position: absolute;
+    background-color: rgba(255, 255, 0, 0.4);
+    pointer-events: none;
+    border-radius: 2px;
+}
+
+/* Tooltip for highlights */
+.tooltip {
+    position: absolute;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    max-width: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    line-height: 1.4;
+}
+
+.tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2c3e50 transparent transparent transparent;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Text Highlighter</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/highlighting.css">
+    <link rel="stylesheet" href="css/comments.css">
+    <link rel="stylesheet" href="css/suggestions.css">
+    
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Text Similarity Highlighter</h2>
+            
+            <div class="upload-section">
+                <label for="pdf-upload" class="upload-label">Upload PDF:</label>
+                <input type="file" id="pdf-upload" accept=".pdf" />
+            </div>
+            
+            <div class="text-input-section">
+                <label for="search-text">Enter text to highlight similar content:</label>
+                <textarea id="search-text" placeholder="Type your text here..." rows="6"></textarea>
+                <button id="highlight-btn">Highlight Similar Text</button>
+                <button id="clear-btn">Clear Highlights</button>
+            </div>
+            
+            <div class="similarity-threshold">
+                <label for="threshold">Similarity Threshold:</label>
+                <input type="range" id="threshold" min="0.1" max="1" step="0.1" value="0.3">
+                <span id="threshold-value">0.3</span>
+            </div>
+        </div>
+        
+        <div class="pdf-viewer">
+            <div id="pdf-container">
+                <div class="upload-prompt">
+                    <p>Upload a PDF file to get started</p>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="prev-page">Previous</button>
+                <span id="page-info">Page 1 of 1</span>
+                <button id="next-page">Next</button>
+                <button id="zoom-out">Zoom Out</button>
+                <button id="zoom-in">Zoom In</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript Modules -->
+    <script src="js/PDFHandler.js"></script>
+    <script src="js/SuggestionSystem.js"></script>
+    <script src="js/CommentSystem.js"></script>
+    <script src="js/TextHighlighter.js"></script>
+    <script src="js/PDFHighlighterApp.js"></script>
+</body>
+</html>

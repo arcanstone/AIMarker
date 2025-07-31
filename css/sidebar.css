@@ -1,0 +1,87 @@
+/* Sidebar styles */
+.sidebar {
+    width: 350px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    color: #ecf0f1;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.upload-section, .text-input-section, .similarity-threshold {
+    margin-bottom: 25px;
+}
+
+.upload-label, label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+#pdf-upload {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #34495e;
+    border-radius: 4px;
+    background-color: #34495e;
+    color: white;
+}
+
+#search-text {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #34495e;
+    border-radius: 4px;
+    background-color: #34495e;
+    color: white;
+    resize: vertical;
+    font-family: inherit;
+}
+
+#search-text::placeholder {
+    color: #bdc3c7;
+}
+
+#highlight-btn {
+    background-color: #e74c3c;
+    color: white;
+    width: 100%;
+}
+
+#highlight-btn:hover {
+    background-color: #c0392b;
+}
+
+#clear-btn {
+    background-color: #95a5a6;
+    color: white;
+    width: 100%;
+}
+
+#clear-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.similarity-threshold {
+    display: flex;
+    flex-direction: column;
+}
+
+#threshold {
+    margin: 10px 0;
+    width: 100%;
+}
+
+#threshold-value {
+    text-align: center;
+    font-weight: bold;
+    color: #e74c3c;
+}
