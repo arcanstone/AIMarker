@@ -1,0 +1,33 @@
+{
+  "name": "aimarker-backend",
+  "version": "1.0.0",
+  "description": "Backend API for AIMarker assignment review system",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "migrate": "node migrations/setup.js",
+    "seed": "node migrations/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.1",
+    "path": "^0.12.7",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "pdf",
+    "assignments",
+    "comments",
+    "review",
+    "education"
+  ],
+  "author": "AIMarker",
+  "license": "MIT"
+}
