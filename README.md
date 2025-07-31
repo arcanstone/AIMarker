@@ -1,4 +1,4 @@
-# PDF Text Highlighter
+# AIMarker - PDF Text Highlighter
 
 A web application for uploading PDFs, highlighting similar text based on search queries, and adding interactive comments with smart suggestions.
 
