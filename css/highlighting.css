@@ -1,70 +1,240 @@
-/* Text highlighting styles */
+/* Claude-inspired text highlighting styles */
 .text-layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    opacity: 0.2;
-    line-height: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  opacity: 0.2;
+  line-height: 1;
 }
 
 .text-layer > span {
-    color: transparent;
-    position: absolute;
-    white-space: pre;
-    cursor: text;
-    transform-origin: 0% 0%;
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
 }
 
 .highlight {
-    background-color: yellow !important;
-    opacity: 0.7 !important;
+  background-color: var(--color-warning) !important;
+  opacity: 0.4 !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3) !important;
+  transition: all 0.15s ease !important;
 }
 
 .highlight:hover {
-    cursor: pointer;
-    opacity: 0.9 !important;
+  cursor: pointer;
+  opacity: 0.6 !important;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5) !important;
+  transform: scale(1.02) !important;
 }
 
 .highlight-overlay {
-    position: absolute;
-    background-color: rgba(255, 255, 0, 0.4);
-    pointer-events: none;
-    border-radius: 2px;
+  position: absolute;
+  background-color: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
 }
 
-/* Tooltip for highlights */
+/* Claude-style tooltip for highlights */
 .tooltip {
-    position: absolute;
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    max-width: 250px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-5px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    line-height: 1.4;
+  position: absolute;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  font-size: 13px;
+  max-width: 280px;
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.5;
+  color: var(--color-text-primary);
 }
 
 .tooltip.show {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #2c3e50 transparent transparent transparent;
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--color-bg-elevated) transparent transparent transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: var(--color-border-primary) transparent transparent transparent;
+  z-index: -1;
+}
+
+/* Tooltip content styling */
+.tooltip-header {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.tooltip-emoji {
+  font-size: 16px;
+}
+
+.tooltip-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: 12px;
+}
+
+.tooltip-stat-label {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.tooltip-stat-value {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.tooltip-preview {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-primary);
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  line-height: 1.4;
+}
+
+.tooltip-preview-label {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.tooltip-preview-text {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', monospace;
+  background-color: var(--color-bg-tertiary);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-primary);
+}
+
+/* Highlight animation on creation */
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+.highlight.newly-created {
+  animation: highlightPulse 0.8s ease-out;
+}
+
+/* Different highlight intensity levels */
+.highlight[data-similarity^='0.9'],
+.highlight[data-similarity='1.000'] {
+  background-color: var(--color-error) !important;
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.4) !important;
+}
+
+.highlight[data-similarity^='0.8'] {
+  background-color: var(--color-warning) !important;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.4) !important;
+}
+
+.highlight[data-similarity^='0.7'] {
+  background-color: var(--color-warning) !important;
+  opacity: 0.35 !important;
+}
+
+.highlight[data-similarity^='0.6'] {
+  background-color: var(--color-warning) !important;
+  opacity: 0.3 !important;
+}
+
+.highlight[data-similarity^='0.5'] {
+  background-color: var(--color-warning) !important;
+  opacity: 0.25 !important;
+}
+
+/* Highlight statistics panel */
+.highlight-stats {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 999;
+  min-width: 200px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.highlight-stats.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.highlight-stats-header {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  font-size: 14px;
+}
+
+.highlight-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  font-size: 13px;
+}
+
+.highlight-stat-label {
+  color: var(--color-text-secondary);
+}
+
+.highlight-stat-value {
+  color: var(--color-primary);
+  font-weight: 600;
 }
